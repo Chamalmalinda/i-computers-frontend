@@ -4,7 +4,7 @@ import Test from "./components/test";
 import HomePage from "./pages/homePage";
 import LoginPage from "./pages/loginPage";
 import RegisterPage from "./pages/registerPage";
-import AdminPage from "./pages/adminPage";
+import AdminPage from "./pages/admin/adminPage";
 import { Toaster } from "react-hot-toast";
 
 
