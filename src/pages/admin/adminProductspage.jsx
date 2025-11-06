@@ -4,6 +4,7 @@ import { BiPlus, BiTrash } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Loader } from "../../components/loader";
+import ProductDeleteButton from "../../components/productDeleteButton";
 
 export function AdminProductspage() {
   const [products, setProducts] = useState([]);
@@ -82,28 +83,9 @@ export function AdminProductspage() {
 
                 {/* 🗑️ Delete Button */}
                 <td className="py-3 px-4 text-center">
-                  <button
-                    onClick={() => {
-                      const token = localStorage.getItem("token");
-                      axios
-                        .delete(
-                          `${import.meta.env.VITE_BACKEND_URL}/products/${item.productID}`,
-                          {
-                            headers: {
-                              Authorization: `Bearer ${token}`,
-                            },
-                          }
-                        )
-                        .then(() => {
-                          toast.success("Product Deleted Successfully");
-                          setLoaded(false)
-                        });
-                    }}
-                    className="p-2 rounded-full bg-red-100 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-200 shadow-sm cursor-pointer"
-                    title="Delete Product"
-                  >
-                    <BiTrash className="text-xl" />
-                  </button>
+                  <div>
+                    <ProductDeleteButton productID = {item.productID} reload={()=>{setLoaded(false)}}/>
+                  </div>
                 </td>
               </tr>
             ))}

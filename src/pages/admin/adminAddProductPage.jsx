@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { AiOutlineProduct } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import uploadFile from "../../utils/mediaUpload";
 
 export default function AdminAddProductPage() {
   const [productID, setProductID] = useState("");
@@ -11,7 +12,7 @@ export default function AdminAddProductPage() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [labledPrice, setLabledPrice] = useState("");
-  const [images, setImages] = useState("");
+  const [files, setFiles] = useState([]);
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
@@ -26,6 +27,24 @@ export default function AdminAddProductPage() {
       navigate("/login");
       return;
     }
+    console.log(files);
+
+    const imagePromises =[]
+
+    for(let i=0; i<files.length; i++){
+
+      const Promise =uploadFile(files[i])
+      imagePromises.push(Promise);
+    }
+
+    const images = await Promise.all(imagePromises).catch((err)=> {
+      toast.error("error uploading images.please try again");
+      console.log("Error uploading images" );
+      console.log(err)
+      return;
+    });
+
+
 
     if (
       productID === "" ||
@@ -41,7 +60,6 @@ export default function AdminAddProductPage() {
 
     try {
       const altNamesInArray =altNames.split(",")  
-      const imagesInArray =images.split(",")
       await axios.post(
         import.meta.env.VITE_BACKEND_URL + "/products/",
         {
@@ -51,7 +69,7 @@ export default function AdminAddProductPage() {
           description: description,
           price: price,
           labledPrice: labledPrice,
-          images: imagesInArray,
+          images: images,
           category: category,
           brand: brand,
           model: model,
@@ -156,9 +174,12 @@ export default function AdminAddProductPage() {
           <div className="my-[10px] w-full">
             <label>Images</label>
             <input
-              type="text"
-              value={images}
-              onChange={(e) => setImages(e.target.value)}
+              type="file"
+              multiple={true}
+              onChange={(e) => {
+              setFiles(e.target.files);
+
+              }}
               className="w-full h-[40px] rounded-2xl border border-accent focus:outline-none focus:ring-2 focus:ring-accent shadow-2xl px-[20px]"
             />
           </div>

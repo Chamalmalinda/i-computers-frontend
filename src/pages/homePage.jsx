@@ -8,12 +8,11 @@ export default function HomePage(){
             <Header/>
             <div className="w-full min-h-[calc(100%-100px)]">
                 <Routes>
-
-               <Route path="/" element={<h1>HomePage</h1>}/>
-               <Route path="/products" element={<h1>Products page</h1>}/>
-               <Route path="/about" element={<h1>About page</h1>}/>
-               <Route path="/contact" element={<h1>Contact page</h1>}/>        
-               <Route path="/*" element={<h1>page not found</h1>}/> 
+                    <Route path="/" element={<h1>Home Page</h1>} />
+                    <Route path="/products" element={<h1>Products Page</h1>} />
+                    <Route path="/about" element={<h1>About Page</h1>} />
+                    <Route path="/contact" element={<h1>Contact Page</h1>} />
+                    <Route path="/*" element={<h1>Page not found</h1>} />
                 </Routes>
             </div>
 
