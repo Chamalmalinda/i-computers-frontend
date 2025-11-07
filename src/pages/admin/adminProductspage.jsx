@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { BiPlus, BiTrash } from "react-icons/bi";
+import { BiEdit, BiPlus, BiTrash } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Loader } from "../../components/loader";
@@ -64,7 +64,7 @@ export function AdminProductspage() {
                 <td className="py-3 px-4 text-gold font-semibold">
                   ${item.price}
                 </td>
-                <td className="py-3 px-4">{item.labelledPrice.join(", ")}</td>
+                <td className="py-3 px-4">{item.labelledPrice.join(" , ")}</td>
                 <td className="py-3 px-4">{item.category}</td>
                 <td className="py-3 px-4">{item.brand}</td>
                 <td className="py-3 px-4">{item.model}</td>
@@ -83,7 +83,16 @@ export function AdminProductspage() {
 
                 {/* 🗑️ Delete Button */}
                 <td className="py-3 px-4 text-center">
-                  <div>
+                  <div className="inline-flex items-center gap-2">
+                  <Link 
+                      to="/admin/update-product"
+                      className="flex items-center gap-2 px-3 py-1 bg-accent/20 text-accent rounded-full hover:bg-accent hover:text-white transition-all duration-200 shadow-sm"
+                      state={item}
+                       >
+                      <BiEdit className="text-lg" />
+                         
+                       </Link>
+                  
                     <ProductDeleteButton productID = {item.productID} reload={()=>{setLoaded(false)}}/>
                   </div>
                 </td>

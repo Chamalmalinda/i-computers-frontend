@@ -1,33 +1,43 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineProduct } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import uploadFile from "../../utils/mediaUpload";
 
-export default function AdminAddProductPage() {
-  const [productID, setProductID] = useState("");
-  const [name, setName] = useState("");
-  const [altNames, setAltNames] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [labelledPrice, setLabelledPrice] = useState("");
+export default function AdminUpdateProductPage() {
+
+  const location = useLocation();
+  
+  const [productID, setProductID] = useState(location.state.productID);
+  const [name, setName] = useState(location.state.name);
+  const [altNames, setAltNames] = useState(location.state.altNames.join(" , "));
+  const [description, setDescription] = useState(location.state.description);
+  const [price, setPrice] = useState(location.state.price);
+  const [labelledPrice, setLabelledPrice] = useState(location.state.labelledPrice);
   const [files, setFiles] = useState([]);
-  const [category, setCategory] = useState("");
-  const [brand, setBrand] = useState("");
-  const [model, setModel] = useState("");
-  const [stock, setStock] = useState("");
-  const [isAvailable, setIsAvailable] = useState(false);
+  const [category, setCategory] = useState(location.state.category);
+  const [brand, setBrand] = useState(location.state.brand);
+  const [model, setModel] = useState(location.state.model);
+  const [stock, setStock] = useState(location.state.stock);
+  const [isAvailable, setIsAvailable] = useState(location.state.isAvailable);
   const navigate = useNavigate();
 
-  async function addProduct() {
+   if(!location.state){
+       window.location.href ="/admiin/products";
+
+   }
+
+
+  async function updateproduct() {
+
     const token = localStorage.getItem("token");
     if (token == null) {
-      toast.error("You must be logged in as admin to add products");
+      toast.error("You must be logged in as admin to upate products");
       navigate("/login");
       return;
     }
-    console.log(files);
+
 
     const imagePromises =[]
 
@@ -37,12 +47,16 @@ export default function AdminAddProductPage() {
       imagePromises.push(Promise);
     }
 
-    const images = await Promise.all(imagePromises).catch((err)=> {
+    let images = await Promise.all(imagePromises).catch((err)=> {
       toast.error("error uploading images.please try again");
       console.log("Error uploading images" );
       console.log(err)
       return;
     });
+
+    if(images.length == 0){
+        images = location.state.images
+    }
 
 
 
@@ -60,8 +74,8 @@ export default function AdminAddProductPage() {
 
     try {
       const altNamesInArray =altNames.split(",")  
-      await axios.post(
-        import.meta.env.VITE_BACKEND_URL + "/products/",
+      await axios.put(
+        import.meta.env.VITE_BACKEND_URL + "/products/"+ productID,
         {
           productID: productID,
           name: name,
@@ -82,7 +96,7 @@ export default function AdminAddProductPage() {
           },
         }
       );
-      toast.success("Product added successfully!");
+      toast.success("Product updated successfully!");
       navigate("/admin/products");
       
     } catch (err) {
@@ -96,7 +110,7 @@ export default function AdminAddProductPage() {
     <div className="w-full h-full flex justify-center items-start p-[50px] overflow-y-scroll">
       <div className="w-[800px] bg-accent/80 rounded-2xl p-[40px] shadow-2xl overflow-y-visible">
         <h1 className="w-full text-xl text-primary mb-[20px] flex items-center gap-[5px]">
-          <AiOutlineProduct /> Add new product
+          <AiOutlineProduct /> Update product
         </h1>
 
         <div className="w-full bg-white p-[20px] flex flex-row flex-wrap justify-between rounded-xl shadow-2xl">
@@ -104,14 +118,13 @@ export default function AdminAddProductPage() {
           <div className="my-[10px] w-[40%]">
             <label>Product ID</label>
             <input
+              disabled
               type="text"
               value={productID}
               onChange={(e) => setProductID(e.target.value)}
               className="w-full h-[40px] rounded-2xl border border-accent focus:outline-none focus:ring-2 focus:ring-accent shadow-2xl px-[20px]"
             />
-            <p className="text-sm text-gray-500 w-full text-right">
-              Provide a unique product ID
-            </p>
+
           </div>
 
           
@@ -247,7 +260,7 @@ export default function AdminAddProductPage() {
           <div className="my-[10px] w-[40%]">
             <label>Available</label>
             <select
-              value={isAvailable.toString()}
+              value={isAvailable}
               onChange={(e) => setIsAvailable(e.target.value === "true")}
               className="w-full h-[40px] rounded-2xl border border-accent focus:outline-none focus:ring-2 focus:ring-accent shadow-2xl px-[20px]"
             >
@@ -265,10 +278,10 @@ export default function AdminAddProductPage() {
           </Link>
 
           <button
-            onClick={addProduct}
+            onClick={updateproduct}
             className="w-[49%] h-[50px] bg-accent text-white font-bold rounded-2xl flex justify-center items-center hover:bg-transparent hover:text-accent border-[2px] mt-[20px]"
           >
-            Add Product
+            Update Product
           </button>
         </div>
       </div>
