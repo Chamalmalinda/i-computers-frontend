@@ -48,7 +48,7 @@ export default function ProductDeleteButton(props){
 
 {isMessageopen && (
   <div className="w-[100vw] h-screen fixed z-[9999] top-0 left-0 bg-black/40 flex justify-center items-center backdrop-blur-sm">
-    <div className="w-[450px] min-h-[250px] bg-white rounded-2xl relative flex flex-col items-center justify-center shadow-2xl border border-gray-200 px-6 py-8">
+    <div className="w-[450px] min-h-[250px] bg-white/30 rounded-4xl relative flex flex-col items-center justify-center shadow-2xl border border-gray-200 px-6 py-8">
       <button
         onClick={() => {
           setIsMessageopen(false);
@@ -61,7 +61,7 @@ export default function ProductDeleteButton(props){
       <h1 className="text-xl font-semibold text-gray-800 mb-4 text-center">
         Are you sure you want to delete this product?
       </h1>
-      <p className="text-sm text-gray-500 mb-6 text-center">
+      <p className="text-sm text-black mb-6 text-center">
         Product ID: <span className="font-mono text-gray-700">{productID}</span>
       </p>
 
