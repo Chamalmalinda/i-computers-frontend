@@ -5,6 +5,7 @@ import { MdOutlineRateReview } from "react-icons/md";
 import { AdminProductspage } from "./adminProductspage";
 import AdminAddProductPage from "./adminAddProductPage";
 import AdminUpdateProductPage from "./adminUpdateProductPage";
+import { AdminOrdersPage } from "./adminOrdersPage";
 
 
 export default function AdminPage(){
@@ -32,7 +33,7 @@ export default function AdminPage(){
             <div className="w-[calc(100%-300px)] h-full max-h-full bg-primary border-[10px] rounded-3xl overflow-y-scroll border-accent">
                <Routes>
 
-               <Route path="/" element={<h1>Orders</h1>}/>
+               <Route path="/" element={<AdminOrdersPage/>}/>
                <Route path="/products" element={<AdminProductspage/>}/>
                <Route path="/add-product" element={<AdminAddProductPage/>}/>
                <Route path="/update-product" element={<AdminUpdateProductPage/>}/>

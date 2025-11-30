@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BiEdit, BiPlus, BiTrash } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Loader } from "../../components/loader";
 import ProductDeleteButton from "../../components/productDeleteButton";
@@ -9,6 +9,7 @@ import ProductDeleteButton from "../../components/productDeleteButton";
 export function AdminProductspage() {
   const [products, setProducts] = useState([]);
   const [loaded, setLoaded] = useState(false)
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(! loaded){

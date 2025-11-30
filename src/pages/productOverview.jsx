@@ -73,6 +73,7 @@ export function ProductOverview(){
                 <button 
                 onClick={()=>{
                     navigate("/checkout" , {state: [{
+                        
                         productID: product.productID,
                         name:product.name,
                         price:product.price,

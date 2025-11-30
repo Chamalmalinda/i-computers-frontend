@@ -1,10 +1,15 @@
+import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import {  BsChevronUp } from "react-icons/bs";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function CheckutPage(){
     const location = useLocation();
     const navigate =useNavigate();
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
     const [cart, setCart] =useState( location.state);
 
     if(location.state == null){
@@ -19,6 +24,44 @@ export default function CheckutPage(){
         )
         return total;
     }
+
+   async function submitOrder(){
+          const token = localStorage.getItem("token");
+
+          if(token == null){
+            toast.error("You must be logged in to place an order");
+            navigate("/login");
+            return;
+          }
+
+          const orderItems =[]
+
+          cart.forEach((item) =>{
+            orderItems.push({
+                productID: item.productID,
+                quantity: item.quantity
+            })
+          });
+
+          axios.post(import.meta.env.VITE_BACKEND_URL + "/orders",{
+            name: name,
+            address: address,
+            phone: phone,
+            items: orderItems
+            },{
+                headers:{
+                    "Authorization": `Bearer ${token}`
+                }
+    }
+    ).then(()=>{
+        toast.success("Order placed Successfully");
+        navigate("/orders");
+
+    }).catch((error)=>{
+        toast.error("Error placing order")
+    })
+}
+
 
 
     return(
@@ -79,8 +122,39 @@ export default function CheckutPage(){
                     }
                 )
             }
+
+            <div className="w-[50%] p-4 shadow-2xl rounded-xl overflow-hidden my-1 flex flex-wrap justify-between items-center">
+                <div className="w-[50%] flex flex-col">
+                <label>Name</label>
+                <input 
+                    type ="text"
+                    value={name}
+                    onChange={(e)=> setName(e.target.value)}
+                    className="px-6 py-3 rounded border-2 border-secondary/30 focus:border-accent outline-none transition w-[300px]"
+                />
+                </div>
+                <div className="w-[50%] flex flex-col">
+                <label>Phone</label>
+                <input 
+                    type ="text"
+                    value={phone}
+                    onChange={(e)=> setPhone(e.target.value)}
+                    className="px-6 py-3 rounded border-2 border-secondary/30 focus:border-accent outline-none transition w-[300px]"
+                />
+                </div>
+                <div className="w-full flex flex-col">
+                <label>Address</label>
+                <textarea 
+                    type ="text"
+                    value={address}
+                    onChange={(e)=> setAddress(e.target.value)}
+                    className="px-6 py-3 rounded border-2 border-secondary/30 focus:border-accent outline-none transition w-full"
+                />
+                </div>
+                
+             </div>
              <div className="w-[50%] h-[150px] shadow-2xl rounded-xl overflow-hidden my-1 flex justify-between items-center">
-                <button
+                <button onClick={submitOrder}
                 className="self-center ml-4 px-6 py-3 rounded bg-accent text-white hover:bg-accent/90 transition"
                 >
                    Order Now
@@ -94,4 +168,4 @@ export default function CheckutPage(){
                
         </div>
     )
-}
+   }
