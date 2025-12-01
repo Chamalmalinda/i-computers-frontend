@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Loader } from "../../components/loader";
+import ViewOrderInfo from "../../components/viewOrderInfo";
 
 
 export function AdminOrdersPage() {
@@ -66,7 +67,7 @@ export function AdminOrdersPage() {
                 <td className="py-3 px-4">{order.status}</td>
                 <td className="py-3 px-4">LKR. {order.total}</td>
                 <td className="py-3 px-4">
-
+                <ViewOrderInfo order={order}/>
                 </td>
 
               </tr>
