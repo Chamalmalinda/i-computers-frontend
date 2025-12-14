@@ -8,12 +8,14 @@ import OrdersPage from "./ordersPage";
 import AboutUsPage from "./aboutUsPage";
 import ContactPage from "./contactPage";
 import Home from "./homeContent";
+import Footer from "../components/footer";
 
 export default function HomePage(){
     return(
         <div className="w-full h-full overflow-y-scroll max-h-full">
             
             <Header/>
+            
             <div className="w-full min-h-[calc(100%-100px)]">
                 <Routes>
                     <Route path="/" element={<Home/>} />
@@ -28,7 +30,8 @@ export default function HomePage(){
                     
                 </Routes>
             </div>
-
+           <Footer />
         </div>
+        
     )
 }

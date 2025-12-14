@@ -1,206 +1,206 @@
-import React from "react";
+// src/pages/aboutUsPage.jsx
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const SLOGANS = [
+  "We don’t just sell computers — we build trust.",
+  "Genuine parts. Transparent pricing. Real humans.",
+  "From first-time buyers to pro builders — everyone feels at home.",
+];
 
 export default function AboutUsPage() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % SLOGANS.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="w-full min-h-[calc(100vh-100px)] bg-[#f8fafc] text-[#1e293b]">
-      <div className="w-full h-[120px] sticky top-0 bg-white flex items-center justify-center shadow-md z-20">
-        <div className="max-w-6xl w-full px-6">
-          <h1 className="text-3xl font-extrabold">About Us</h1>
+    <div className="w-full min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Hero Section - Same exact style as Home */}
+      <section className="relative min-h-screen flex items-center justify-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/about.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/85 to-black/95" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2 }}
+          className="relative z-10 max-w-7xl mx-auto px-6 text-center"
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300 mb-4">
+            Isuri Technologies • Since 2015
+          </p>
+
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight">
+            Built on{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent">
+              Trust
+            </span>
+            .<br />
+            Powered by{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent">
+              Passion
+            </span>
+            .
+          </h1>
+
+          {/* Animated Slogan - Same as Home */}
+          <motion.p
+            key={activeIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.8 }}
+            className="mt-10 min-h-[3rem] text-lg sm:text-xl md:text-2xl font-medium text-cyan-100"
+          >
+            {SLOGANS[activeIndex]}
+          </motion.p>
+
+          <div className="mt-12 flex flex-col sm:flex-row gap-5 justify-center">
+            <Link
+              to="/products"
+              className="inline-flex items-center justify-center rounded-full bg-cyan-500 px-8 py-4 text-lg font-bold text-slate-900 shadow-lg shadow-cyan-500/40 transition-all hover:bg-cyan-400 hover:shadow-cyan-400/60 hover:scale-105"
+            >
+              Explore Custom Builds
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center rounded-full border border-slate-500/70 bg-white/5 px-8 py-4 text-lg font-semibold text-slate-100 backdrop-blur-md transition-all hover:border-cyan-400 hover:bg-white/10 hover:scale-105"
+            >
+              Talk to Our Team
+            </Link>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Our Story - Glassmorphic Cards (Same style as Home) */}
+      <section className="py-20 px-6 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9 }}
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">
+              Our Journey
+            </p>
+            <h2 className="mt-4 text-4xl sm:text-5xl font-black leading-tight">
+              From a small Colombo workshop
+              <br />
+              to Sri Lanka’s most trusted PC builder.
+            </h2>
+            <p className="mt-8 text-lg leading-relaxed text-gray-300">
+              We started in 2015 with one simple belief: <strong>everyone deserves great tech without the drama</strong>.
+              No pushy sales. No fake discounts. Just honest advice, genuine parts, and builds that actually last.
+            </p>
+            <p className="mt-6 text-lg text-gray-300">
+              Today, thousands of students, gamers, creators, and businesses trust us to power their digital lives — because we treat every build like it’s our own.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1"
+          >
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
+              <div className="text-5xl font-black text-cyan-400">12K+</div>
+              <p className="mt-2 text-lg font-semibold">Happy Customers Island-wide</p>
+            </div>
+            <div className="rounded-2xl border border-cyan-500/40 bg-cyan-500/10 p-8 backdrop-blur-md">
+              <div className="text-5xl font-black text-cyan-300">8000+</div>
+              <p className="mt-2 text-lg font-semibold">Custom PCs Delivered</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-black/40 p-8 backdrop-blur-md sm:col-span-2 lg:col-span-1">
+              <p className="text-xs uppercase tracking-wide text-cyan-300">
+                Our Promise
+              </p>
+              <p className="mt-3 text-lg font-semibold">
+                Transparent pricing • Genuine parts • Lifetime support
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                <span className="rounded-full bg-white/10 px-4 py-1.5">No hidden costs</span>
+                <span className="rounded-full bg-white/10 px-4 py-1.5">Data-safe repairs</span>
+                <span className="rounded-full bg-cyan-500/20 px-4 py-1.5">24/7 WhatsApp help</span>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
 
-      <main className="max-w-6xl mx-auto px-6 py-12">
-        <section className="rounded-2xl bg-white/80 shadow-lg p-8 mb-8 overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <p className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold text-sm">
-                Our Story
-              </p>
-              <h2 className="text-4xl lg:text-5xl font-extrabold mt-6 leading-tight">
-                Built for performance, designed for people.
-              </h2>
-              <p className="text-[#374151] mt-4 text-lg leading-relaxed">
-                We create confident shopping experiences by combining thoughtful design,
-                reliable technology, and a people-first approach. From day one our focus
-                has been simple: make it easy for customers to discover great products and
-                trust the stores behind them.
-              </p>
-              <div className="mt-6 flex gap-4">
-                <button className="px-5 py-3 bg-accent text-white rounded-lg font-medium shadow-sm hover:opacity-95 transition">
-                  Shop Now
-                </button>
-                <button
-                  onClick={() => window.scrollTo({ top: 700, behavior: "smooth" })}
-                  className="px-5 py-3 border border-accent text-accent rounded-lg font-medium bg-white hover:bg-accent/5 transition"
-                >
-                  Learn More
-                </button>
-              </div>
-            </div>
+      {/* Core Values - Same glass cards */}
+      <section className="py-20 bg-gradient-to-b from-black via-slate-950 to-black">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-4xl sm:text-5xl font-black mb-16">
+            Why People Choose Isuri
+          </h2>
 
-            <div className="relative">
-              <div className="aspect-[4/3] w-full rounded-xl overflow-hidden shadow-xl">
-                <img
-                  src="/about-hero.jpg"
-                  alt="About hero"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute right-6 bottom-6 bg-white rounded-2xl p-4 shadow-lg w-64">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-lg bg-gradient-to-br from-amber-400 to-yellow-500"></div>
-                  <div>
-                    <div className="text-sm font-semibold">Trusted Quality</div>
-                    <div className="text-xs text-[#6b7280]">Curated & tested</div>
-                  </div>
-                </div>
-                <div className="mt-3 text-sm text-[#374151]">
-                  We partner with trusted brands and perform strict quality checks on
-                  every product listed on our platform.
-                </div>
-              </div>
-            </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Real Humans, Real Help",
+                desc: "No bots. No scripts. Just friendly experts who actually care.",
+                highlight: true,
+              },
+              {
+                title: "Genuine Parts Only",
+                desc: "Every component is original. Every warranty is honored.",
+              },
+              {
+                title: "Clear & Fair Pricing",
+                desc: "What you see is what you pay. No surprises. Ever.",
+              },
+            ].map((value, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.2 }}
+                className={`rounded-2xl border p-8 backdrop-blur-md transition-all hover:scale-105 ${
+                  value.highlight
+                    ? "border-cyan-500/50 bg-cyan-500/10 shadow-lg shadow-cyan-500/20"
+                    : "border-white/10 bg-white/5"
+                }`}
+              >
+                <h3 className="text-2xl font-bold text-cyan-300 mb-4">{value.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{value.desc}</p>
+              </motion.div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-          <div className="rounded-2xl bg-white p-6 shadow-lg">
-            <h3 className="text-2xl font-bold">Our Mission</h3>
-            <p className="text-[#374151] mt-4 leading-relaxed">
-              Deliver an effortless shopping experience that respects your time and
-              priorities. We aim to combine speed, transparency, and exceptional
-              customer support so every purchase feels like the right one.
-            </p>
-            <ul className="mt-6 grid grid-cols-1 gap-3">
-              <li className="flex items-start gap-3">
-                <div className="w-4 h-4 rounded-full bg-accent mt-1"></div>
-                <div>
-                  <div className="font-semibold">Customer-first decisions</div>
-                  <div className="text-sm text-[#6b7280]">Every feature built with users in mind.</div>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-4 h-4 rounded-full bg-accent mt-1"></div>
-                <div>
-                  <div className="font-semibold">Fast, reliable platform</div>
-                  <div className="text-sm text-[#6b7280]">Performance that scales with you.</div>
-                </div>
-              </li>
-            </ul>
+      {/* Final CTA - Matching Home perfectly */}
+      <section className="py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/30 via-indigo-900/30 to-violet-900/30" />
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black mb-8">
+            Ready to Level Up?
+          </h2>
+          <p className="text-xl md:text-2xl text-cyan-100 mb-12 max-w-3xl mx-auto">
+            Whether you're a student, gamer, creator, or business — we’ll build the perfect machine for you.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              to="/products"
+              className="inline-flex items-center justify-center rounded-full bg-cyan-500 px-12 py-5 text-xl font-bold text-slate-900 shadow-2xl shadow-cyan-500/50 transition-all hover:bg-cyan-400 hover:shadow-cyan-400/70 hover:scale-110"
+            >
+              START BUILDING NOW
+            </Link>
           </div>
-
-          <div className="rounded-2xl bg-white p-6 shadow-lg">
-            <h3 className="text-2xl font-bold">Our Vision</h3>
-            <p className="text-[#374151] mt-4 leading-relaxed">
-              To be the most trusted and efficient marketplace where discovery meets
-              certainty — helping customers find products they love with confidence and
-              speed.
-            </p>
-            <div className="mt-6 grid grid-cols-2 gap-4">
-              <div className="p-4 rounded-lg border border-gray-100">
-                <div className="text-sm font-semibold">Scale with integrity</div>
-                <div className="text-xs text-[#6b7280] mt-1">Growth without compromise.</div>
-              </div>
-              <div className="p-4 rounded-lg border border-gray-100">
-                <div className="text-sm font-semibold">Sustainable operations</div>
-                <div className="text-xs text-[#6b7280] mt-1">Long-term thinking, every day.</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="rounded-2xl bg-white p-8 shadow-lg mb-8">
-          <h3 className="text-2xl font-bold mb-6">Core Values</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-5 rounded-lg border border-gray-100">
-              <div className="font-semibold">Reliability</div>
-              <div className="text-sm text-[#6b7280] mt-3">Always dependable, always accurate.</div>
-            </div>
-
-            <div className="p-5 rounded-lg border border-gray-100">
-              <div className="font-semibold">People-first</div>
-              <div className="text-sm text-[#6b7280] mt-3">Design and decisions centered on people.</div>
-            </div>
-
-            <div className="p-5 rounded-lg border border-gray-100">
-              <div className="font-semibold">Excellence</div>
-              <div className="text-sm text-[#6b7280] mt-3">High standards across product and service.</div>
-            </div>
-          </div>
-        </section>
-
-        <section className="rounded-2xl bg-white p-8 shadow-lg mb-8">
-          <h3 className="text-2xl font-bold mb-6">Why Choose Us</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-4 rounded-lg border border-gray-100 flex flex-col">
-              <div className="text-lg font-semibold text-accent">Curated Selection</div>
-              <div className="text-sm text-[#6b7280] mt-2">Handpicked products from trusted brands.</div>
-            </div>
-            <div className="p-4 rounded-lg border border-gray-100 flex flex-col">
-              <div className="text-lg font-semibold text-accent">Transparent Pricing</div>
-              <div className="text-sm text-[#6b7280] mt-2">No hidden fees, clear checkout.</div>
-            </div>
-            <div className="p-4 rounded-lg border border-gray-100 flex flex-col">
-              <div className="text-lg font-semibold text-accent">Fast Support</div>
-              <div className="text-sm text-[#6b7280] mt-2">Responsive help when you need it most.</div>
-            </div>
-          </div>
-        </section>
-
-        <section className="rounded-2xl bg-white p-8 shadow-lg mb-8">
-          <h3 className="text-2xl font-bold mb-6">Meet the Team</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="flex flex-col items-center text-center p-4 bg-white border border-gray-100 rounded-lg shadow-sm">
-              <div className="w-28 h-28 rounded-full overflow-hidden bg-gray-100">
-                <img src="/team1.jpg" alt="team" className="w-full h-full object-cover" />
-              </div>
-              <div className="mt-4 font-semibold">Naveen Perera</div>
-              <div className="text-sm text-[#6b7280]">Founder & CEO</div>
-              <div className="text-sm text-[#6b7280] mt-2">Building reliable shopping experiences for everyone.</div>
-            </div>
-
-            <div className="flex flex-col items-center text-center p-4 bg-white border border-gray-100 rounded-lg shadow-sm">
-              <div className="w-28 h-28 rounded-full overflow-hidden bg-gray-100">
-                <img src="/team2.jpg" alt="team" className="w-full h-full object-cover" />
-              </div>
-              <div className="mt-4 font-semibold">Sithara Jay</div>
-              <div className="text-sm text-[#6b7280]">Head of Product</div>
-              <div className="text-sm text-[#6b7280] mt-2">Designing intuitive, high-impact product experiences.</div>
-            </div>
-
-            <div className="flex flex-col items-center text-center p-4 bg-white border border-gray-100 rounded-lg shadow-sm">
-              <div className="w-28 h-28 rounded-full overflow-hidden bg-gray-100">
-                <img src="/team3.jpg" alt="team" className="w-full h-full object-cover" />
-              </div>
-              <div className="mt-4 font-semibold">Chamali Rodrigo</div>
-              <div className="text-sm text-[#6b7280]">Engineering Lead</div>
-              <div className="text-sm text-[#6b7280] mt-2">Building systems for scale and reliability.</div>
-            </div>
-
-            <div className="flex flex-col items-center text-center p-4 bg-white border border-gray-100 rounded-lg shadow-sm">
-              <div className="w-28 h-28 rounded-full overflow-hidden bg-gray-100">
-                <img src="/team4.jpg" alt="team" className="w-full h-full object-cover" />
-              </div>
-              <div className="mt-4 font-semibold">Ruwan Silva</div>
-              <div className="text-sm text-[#6b7280]">Customer Success</div>
-              <div className="text-sm text-[#6b7280] mt-2">Ensuring customers have outstanding support experiences.</div>
-            </div>
-          </div>
-        </section>
-
-        <section className="rounded-2xl bg-white p-8 shadow-lg mb-16 text-center">
-          <h3 className="text-2xl font-bold mb-4">Join Our Journey</h3>
-          <p className="text-[#374151] mb-6">We’re just getting started. Help us build something exceptional.</p>
-          <div className="flex justify-center gap-4">
-            <button className="px-6 py-3 bg-accent text-white rounded-lg font-semibold shadow hover:opacity-95 transition">
-              Get Started
-            </button>
-            <button className="px-6 py-3 border border-accent text-accent rounded-lg font-semibold bg-white hover:bg-accent/5 transition">
-              Contact Sales
-            </button>
-          </div>
-        </section>
-      </main>
+        </div>
+      </section>
     </div>
   );
 }

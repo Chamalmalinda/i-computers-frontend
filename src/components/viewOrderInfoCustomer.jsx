@@ -49,7 +49,7 @@ export default function ViewOrderInfoCustomer(props) {
 				onRequestClose={() => setIsModalOpen(false)}
 				ariaHideApp={false}
 				overlayClassName="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
-				className="w-full max-w-3xl mx-4 bg-primary rounded-2xl shadow-2xl outline-none"
+				className="w-full max-w-3xl mx-4 bg-white rounded-2xl shadow-2xl outline-none"
 			>
 				<div className="flex flex-col h-full max-h-[90vh]">
 					{/* Header */}

@@ -4,146 +4,141 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { Loader } from "../components/loader";
 
-export default function RegisterPage(){
-const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState("");
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
-    const [isLoading , setIsLoading] = useState(false);
+export default function RegisterPage() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	async function register() {
+  async function register() {
+    if (firstName.trim() === "") {
+      toast.error("First name is required");
+      return;
+    }
+    if (lastName.trim() === "") {
+      toast.error("Last name is required");
+      return;
+    }
+    if (email.trim() === "") {
+      toast.error("Email is required");
+      return;
+    }
+    if (password.trim() === "") {
+      toast.error("Password is required");
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
 
+    setIsLoading(true);
+    try {
+      await axios.post(import.meta.env.VITE_BACKEND_URL + "/users/", {
+        email: email.trim(),
+        password: password.trim(),
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+      });
 
-        if(firstName.trim()== ""){
-            toast.error("First name is required");
-            return;
-        }
-        if(lastName.trim()== ""){
-            toast.error("Last name is required");
-            return;
-        }
-        if(email.trim()== ""){
-            toast.error("Email is required");
-            return;
-        }
-        if(password.trim()== ""){
-            toast.error("Password is required");
-            return;
-        }   
-        if(password !== confirmPassword){
-            toast.error("Passwords do not match");
-            return;
-        }
+      toast.success("Registration successful! Welcome to I computers.");
+      navigate("/login");
+      setIsLoading(false);
+    } catch (err) {
+      toast.error("Registration failed! Please check your data and try again.");
+      console.log(err);
+      setIsLoading(false);
+    }
+  }
 
-        if(password != confirmPassword){
-            toast.error("Passwords do not match");
-            return;
-        }
-        setIsLoading(true);
-		try {
-			await axios.post(
-				import.meta.env.VITE_BACKEND_URL + "/users/",
-				{
-					email: email.trim(),
-					password: password.trim(),
-                    firstName: firstName.trim(),
-                    lastName: lastName.trim(),
-				}
-			);
-			console.log();
-            navigate("/login");
-			//alert("Login successful! Welcome back.");
+  return (
+    <div className="relative w-full min-h-screen bg-[url('/bg.jpg')] bg-center bg-cover bg-no-repeat flex flex-col lg:flex-row">
+      {/* Left Section - Branding */}
+      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 lg:p-16 text-center lg:text-left bg-black/40 lg:bg-transparent">
+        <img
+          src="/logo.png"
+          alt="logo"
+          className="w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64 mb-6 object-contain drop-shadow-2xl"
+        />
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gold drop-shadow-2xl leading-tight">
+          Plug In. Power Up. Play Hard.
+        </h1>
+        <p className="mt-4 text-lg sm:text-xl lg:text-2xl text-white italic opacity-90">
+          Your Ultimate Destination for Gaming Gear
+        </p>
+      </div>
 
-			toast.success("Registration successful! Welcome to I computers.");
-            setIsLoading(false);
-		} catch (err) {
-			//alert("Login failed! Please check your credentials and try again.");
-			toast.error("Registration failed! Please check your data and try again.");
-			console.log(err);
-            setIsLoading(false);
-		}
-	}
+      {/* Right Section - Register Form */}
+      <div className="w-full lg:w-1/2 flex justify-center items-center p-6 lg:p-12">
+        <div className="w-full max-w-md backdrop-blur-lg shadow-2xl rounded-2xl p-8 lg:p-10 flex flex-col">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-white text-center drop-shadow-lg">
+            Register
+          </h1>
 
-	return (
-		<div className="w-full h-screen bg-[url('/bg.jpg')] bg-center bg-cover bg-no-repeat flex">            
-			<div className="w-[50%] h-full flex justify-center items-center flex-col p-[50px]">
-				<img
-					src="/logo.png"
-					alt="logo"
-					className="w-[200px] h-[200px] mb-[20px] object-cover"
-				/>
-				<h1 className="text-[50px] text-gold text-shadow-accent text-shadow-2xs text-center font-bold">
-					Plug In. Power Up. Play Hard.
-				</h1>
-				<p className="text-[30px] text-white italic">
-					Your Ultimate Destination for Gaming Gear
-				</p>
-			</div>
-			<div className="w-[50%] h-full flex justify-center items-center">
-				<div className="w-[450px] h-[600px] backdrop-blur-lg shadow-2xl rounded-2xl flex flex-col justify-center items-center p-[30px]">
-					<h1 className="text-[20px] font-semibold mb-[20px] text-white text-shadow-white ">
-						Register
-					</h1>
-					<input
-						onChange={(e) => {
-							setFirstName(e.target.value);
-						}}
-						type="text"
-						placeholder="your first name"
-						className="w-full h-[50px] mb-[20px] rounded-lg border border-accent p-[10px] text-[20px] focus:outline-none focus:ring-2 focus:ring-gold"
-					/>
-                    <input
-                        onChange={(e) => {  
-                            setLastName(e.target.value);
-                        }}
-                        type="text"
-                        placeholder="your last name"
-                        className="w-full h-[50px] mb-[20px] rounded-lg border border-accent p-[10px] text-[20px] focus:outline-none focus:ring-2 focus:ring-gold"
-                    />
-					<input
-						onChange={(e) => {
-							setEmail(e.target.value);
-						}}
-						type="email"
-						placeholder="your email"
-						className="w-full h-[50px] mb-[20px] rounded-lg border border-accent p-[10px] text-[20px] focus:outline-none focus:ring-2 focus:ring-gold"
-					/>
-					<input
-						onChange={(e) => {
-							setPassword(e.target.value);
-						}}
-						type="password"
-						placeholder="your password"
-						className="w-full h-[50px] mb-[20px] rounded-lg border border-accent p-[10px] text-[20px] focus:outline-none focus:ring-2 focus:ring-gold"
-					/>
-                    <input
-                        onChange={(e) => {
-                            setConfirmPassword(e.target.value);
-                        }}
-                        type="password"
-                        placeholder="confirm your password"
-                        className="w-full h-[50px] mb-[20px] rounded-lg border border-accent p-[10px] text-[20px] focus:outline-none focus:ring-2 focus:ring-gold"
-                    />
+          {/* First Name */}
+          <input
+            onChange={(e) => setFirstName(e.target.value)}
+            type="text"
+            placeholder="Your first name"
+            className="w-full h-12 mb-4 rounded-lg border border-accent bg-white/10 px-4 text-white placeholder-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-gold transition"
+          />
 
-					
-					<button
-						onClick={register}
-						className="w-full h-[50px] bg-accent text-white font-bold text-[20px] rounded-lg border-[2px] border-accent hover:bg-transparent hover:text-accent"
-					>
-						Register Now
-					</button>
-					<p className="text-white not-italic">
-						Already have an account?
-						<Link to="/login" className="text-gold italic">
-							Login here
-						</Link>
-					</p>
-				</div>
-			</div>
-            {isLoading && <Loader />}
-		</div>
-	);
+          {/* Last Name */}
+          <input
+            onChange={(e) => setLastName(e.target.value)}
+            type="text"
+            placeholder="Your last name"
+            className="w-full h-12 mb-4 rounded-lg border border-accent bg-white/10 px-4 text-white placeholder-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-gold transition"
+          />
+
+          {/* Email */}
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder="Your email"
+            className="w-full h-12 mb-4 rounded-lg border border-accent bg-white/10 px-4 text-white placeholder-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-gold transition"
+          />
+
+          {/* Password */}
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            placeholder="Your password"
+            className="w-full h-12 mb-4 rounded-lg border border-accent bg-white/10 px-4 text-white placeholder-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-gold transition"
+          />
+
+          {/* Confirm Password */}
+          <input
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            type="password"
+            placeholder="Confirm your password"
+            className="w-full h-12 mb-6 rounded-lg border border-accent bg-white/10 px-4 text-white placeholder-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-gold transition"
+          />
+
+          {/* Register Button */}
+          <button
+            onClick={register}
+            className="w-full h-12 mb-4 bg-accent text-white font-bold text-lg rounded-lg border-2 border-accent hover:bg-transparent hover:text-accent transition duration-300"
+          >
+            Register Now
+          </button>
+
+          {/* Login Link */}
+          <p className="text-white text-center text-sm sm:text-base">
+            Already have an account?{" "}
+            <Link to="/login" className="text-gold italic hover:underline">
+              Login here
+            </Link>
+          </p>
+        </div>
+      </div>
+
+      {/* Loading Overlay */}
+      {isLoading && <Loader />}
+    </div>
+  );
 }
