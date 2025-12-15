@@ -57,7 +57,7 @@ export default function RegisterPage() {
 
   return (
     <div className="relative w-full min-h-screen bg-[url('/bg.jpg')] bg-center bg-cover bg-no-repeat flex flex-col lg:flex-row">
-      {/* Left Section - Branding */}
+  
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 lg:p-16 text-center lg:text-left bg-black/40 lg:bg-transparent">
         <img
           src="/logo.png"
@@ -72,14 +72,14 @@ export default function RegisterPage() {
         </p>
       </div>
 
-      {/* Right Section - Register Form */}
+
       <div className="w-full lg:w-1/2 flex justify-center items-center p-6 lg:p-12">
         <div className="w-full max-w-md backdrop-blur-lg shadow-2xl rounded-2xl p-8 lg:p-10 flex flex-col">
           <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-white text-center drop-shadow-lg">
             Register
           </h1>
 
-          {/* First Name */}
+     
           <input
             onChange={(e) => setFirstName(e.target.value)}
             type="text"
@@ -87,7 +87,7 @@ export default function RegisterPage() {
             className="w-full h-12 mb-4 rounded-lg border border-accent bg-white/10 px-4 text-white placeholder-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-gold transition"
           />
 
-          {/* Last Name */}
+        
           <input
             onChange={(e) => setLastName(e.target.value)}
             type="text"
@@ -95,7 +95,7 @@ export default function RegisterPage() {
             className="w-full h-12 mb-4 rounded-lg border border-accent bg-white/10 px-4 text-white placeholder-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-gold transition"
           />
 
-          {/* Email */}
+      
           <input
             onChange={(e) => setEmail(e.target.value)}
             type="email"
@@ -103,7 +103,7 @@ export default function RegisterPage() {
             className="w-full h-12 mb-4 rounded-lg border border-accent bg-white/10 px-4 text-white placeholder-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-gold transition"
           />
 
-          {/* Password */}
+   
           <input
             onChange={(e) => setPassword(e.target.value)}
             type="password"
@@ -111,7 +111,7 @@ export default function RegisterPage() {
             className="w-full h-12 mb-4 rounded-lg border border-accent bg-white/10 px-4 text-white placeholder-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-gold transition"
           />
 
-          {/* Confirm Password */}
+      
           <input
             onChange={(e) => setConfirmPassword(e.target.value)}
             type="password"
@@ -119,7 +119,7 @@ export default function RegisterPage() {
             className="w-full h-12 mb-6 rounded-lg border border-accent bg-white/10 px-4 text-white placeholder-gray-300 text-lg focus:outline-none focus:ring-2 focus:ring-gold transition"
           />
 
-          {/* Register Button */}
+    
           <button
             onClick={register}
             className="w-full h-12 mb-4 bg-accent text-white font-bold text-lg rounded-lg border-2 border-accent hover:bg-transparent hover:text-accent transition duration-300"
@@ -127,7 +127,7 @@ export default function RegisterPage() {
             Register Now
           </button>
 
-          {/* Login Link */}
+      
           <p className="text-white text-center text-sm sm:text-base">
             Already have an account?{" "}
             <Link to="/login" className="text-gold italic hover:underline">
@@ -137,7 +137,7 @@ export default function RegisterPage() {
         </div>
       </div>
 
-      {/* Loading Overlay */}
+   
       {isLoading && <Loader />}
     </div>
   );

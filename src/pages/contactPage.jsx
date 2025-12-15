@@ -1,7 +1,6 @@
-// src/pages/contactPage.jsx
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, MessageCircle } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Mail } from "lucide-react";
 
 const SLOGANS = [
   "Talk to a real human — no bots, no scripts.",
@@ -21,7 +20,7 @@ export default function ContactPage() {
 
   return (
     <div className="w-full min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Hero Section */}
+ 
       <section className="relative min-h-screen flex items-center justify-center">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -46,7 +45,7 @@ export default function ContactPage() {
             </span>
           </h1>
 
-          {/* Animated Slogan */}
+      
           <motion.p
             key={activeIndex}
             initial={{ opacity: 0, y: 20 }}
@@ -79,10 +78,10 @@ export default function ContactPage() {
         </motion.div>
       </section>
 
-      {/* Contact Methods - Glassmorphic Cards */}
+
       <section className="py-20 px-6 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-10">
-          {/* WhatsApp */}
+        <div className="grid md:grid-cols-4 gap-10">
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -105,16 +104,16 @@ export default function ContactPage() {
             </a>
           </motion.div>
 
-          {/* Phone */}
+  
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             whileHover={{ y: -10 }}
-            className="rounded-3xl border border-white/10 bg-white/5 p-10 text-center backdrop-blur-md transition-all"
+            className="rounded-3xl border border-blue-500/50 bg-blue-500/10 p-10 text-center backdrop-blur-md shadow-lg shadow-blue-500/20 transition-all"
           >
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-cyan-400 to-indigo-600 shadow-xl">
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-blue-400 to-blue-600 shadow-xl">
               <Phone className="h-12 w-12 text-white" />
             </div>
             <h3 className="text-xl font-bold mb-3">Call Us</h3>
@@ -126,16 +125,34 @@ export default function ContactPage() {
             </a>
           </motion.div>
 
-          {/* Visit Store */}
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             whileHover={{ y: -10 }}
-            className="rounded-3xl border border-white/10 bg-white/5 p-10 text-center backdrop-blur-md transition-all"
+            className="rounded-3xl border border-purple-500/50 bg-purple-500/10 p-10 text-center backdrop-blur-md shadow-lg shadow-purple-500/20 transition-all"
           >
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-violet-500 to-pink-600 shadow-xl">
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-purple-400 to-purple-600 shadow-xl">
+              <Mail className="h-12 w-12 text-white" />
+            </div>
+            <h3 className="text-xl font-bold mb-3">Email Us</h3>
+            <p className="text-base text-gray-300 mb-6">Reply within 24 hours</p>
+            <a href="mailto:info@isuritechnologies.com" className="text-cyan-400 font-semibold hover:underline break-all">
+              info@isuritechnologies.com
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            whileHover={{ y: -10 }}
+            className="rounded-3xl border border-orange-500/50 bg-orange-500/10 p-10 text-center backdrop-blur-md shadow-lg shadow-orange-500/20 transition-all"
+          >
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-orange-400 to-orange-600 shadow-xl">
               <MapPin className="h-12 w-12 text-white" />
             </div>
             <h3 className="text-xl font-bold mb-3">Visit Our Store</h3>
@@ -156,7 +173,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Form */}
+
       <section className="py-20 px-6 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -208,7 +225,7 @@ export default function ContactPage() {
         </motion.div>
       </section>
 
-      {/* Final CTA */}
+ 
       <section className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/30 via-indigo-900/30 to-violet-900/30" />
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">

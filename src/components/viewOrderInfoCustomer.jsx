@@ -22,15 +22,15 @@ export default function ViewOrderInfoCustomer(props) {
 		switch (status?.toLowerCase()) {
 			case "completed":
 			case "paid":
-				return "bg-emerald-100 text-emerald-800 border border-emerald-200";
+				return "bg-green-100 text-green-800 border border-green-300";
 			case "cancelled":
 			case "canceled":
-				return "bg-red-100 text-red-800 border border-red-200";
+				return "bg-red-100 text-red-800 border border-red-300";
 			case "processing":
-				return "bg-blue-100 text-blue-800 border border-blue-200";
+				return "bg-purple-100 text-purple-800 border border-purple-300";
 			default:
-				// pending / default
-				return "bg-yellow-100 text-yellow-800 border border-yellow-200";
+	
+				return "bg-orange-100 text-orange-800 border border-orange-300";
 		}
 	};
 
@@ -48,133 +48,119 @@ export default function ViewOrderInfoCustomer(props) {
 				isOpen={isModalOpen}
 				onRequestClose={() => setIsModalOpen(false)}
 				ariaHideApp={false}
-				overlayClassName="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
-				className="w-full max-w-3xl mx-4 bg-white rounded-2xl shadow-2xl outline-none"
+				overlayClassName="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
+				className="w-full max-w-4xl mx-4 bg-white rounded-3xl shadow-2xl outline-none overflow-hidden"
 			>
 				<div className="flex flex-col h-full max-h-[90vh]">
 					{/* Header */}
-					<div className="flex items-start justify-between border-b border-secondary/10 px-6 py-4">
+					<div className="flex items-start justify-between border-b border-gray-200 px-6 sm:px-8 py-6 bg-gradient-to-r from-blue-950 to-accent">
 						<div>
-							<h2 className="text-2xl font-bold text-secondary">
+							<h2 className="text-3xl font-bold text-white">
 								Order Details
 							</h2>
-							<p className="text-sm text-secondary/70 mt-1">
-								Review the full breakdown of this customer order.
+							<p className="text-sm text-white mt-2">
+								Complete order information and breakdown
 							</p>
 						</div>
 						<button
 							onClick={() => setIsModalOpen(false)}
-							className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-secondary/5 text-secondary hover:bg-secondary/10 transition"
+							className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-violet-100 text-violet-600 hover:bg-violet-200 transition-colors duration-200"
 							aria-label="Close"
 						>
-							<span className="text-lg leading-none">&times;</span>
+							<span className="text-2xl leading-none">&times;</span>
 						</button>
 					</div>
 
-					{/* Body */}
-					<div className="px-6 py-4 space-y-6 overflow-y-auto">
-						{/* Top summary */}
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-							<div className="space-y-2">
-								<div>
-									<p className="text-xs font-semibold tracking-wide text-secondary/60 uppercase">
+		
+					<div className="px-6 sm:px-8 py-6 space-y-6 overflow-y-auto bg-white">
+				
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+					
+							<div className="space-y-4">
+					
+								<div className="bg-gradient-to-br from-cyan-50 to-white border border-cyan-200 rounded-2xl p-4 hover:shadow-md transition-shadow duration-200">
+									<p className="text-xs font-semibold tracking-widest text-cyan-700 uppercase">
 										Order ID
 									</p>
-									<p className="text-sm font-semibold text-secondary">
+									<p className="text-lg font-bold text-cyan-900 mt-2">
 										{order.orderId}
 									</p>
 								</div>
-								<div>
-									<p className="text-xs font-semibold tracking-wide text-secondary/60 uppercase">
+
+						
+								<div className="bg-gradient-to-br from-emerald-50 to-white border border-emerald-200 rounded-2xl p-4 hover:shadow-md transition-shadow duration-200">
+									<p className="text-xs font-semibold tracking-widest text-emerald-700 uppercase">
 										Customer Name
 									</p>
-									<p className="text-sm text-secondary">{order.name}</p>
+									<p className="text-lg font-semibold text-emerald-900 mt-2">
+										{order.name}
+									</p>
 								</div>
-								<div>
-									<p className="text-xs font-semibold tracking-wide text-secondary/60 uppercase">
+
+								<div className="bg-gradient-to-br from-blue-50 to-white border border-blue-200 rounded-2xl p-4 hover:shadow-md transition-shadow duration-200">
+									<p className="text-xs font-semibold tracking-widest text-blue-700 uppercase">
 										Email
 									</p>
-									<p className="text-sm text-secondary break-all">
+									<p className="text-sm text-blue-900 mt-2 break-all font-medium">
 										{order.email}
 									</p>
 								</div>
+
+						
 								{order.phone && (
-									<div>
-										<p className="text-xs font-semibold tracking-wide text-secondary/60 uppercase">
+									<div className="bg-gradient-to-br from-pink-50 to-white border border-pink-200 rounded-2xl p-4 hover:shadow-md transition-shadow duration-200">
+										<p className="text-xs font-semibold tracking-widest text-pink-700 uppercase">
 											Phone
 										</p>
-										<p className="text-sm text-secondary">{order.phone}</p>
+										<p className="text-lg font-semibold text-pink-900 mt-2">
+											{order.phone}
+										</p>
 									</div>
 								)}
 							</div>
 
-							<div className="space-y-2">
-								<div>
-									<p className="text-xs font-semibold tracking-wide text-secondary/60 uppercase">
-										Order Date &amp; Time
+						
+							<div className="space-y-4">
+							
+								<div className="bg-gradient-to-br from-amber-50 to-white border border-amber-200 rounded-2xl p-4 hover:shadow-md transition-shadow duration-200">
+									<p className="text-xs font-semibold tracking-widest text-amber-700 uppercase">
+										Order Date & Time
 									</p>
-									<p className="text-sm text-secondary">
+									<p className="text-sm text-amber-900 mt-2 font-medium">
 										{formatDateTime(order.date)}
 									</p>
 								</div>
-								<div>
-									<p className="text-xs font-semibold tracking-wide text-secondary/60 uppercase">
-										Status
+
+							
+								<div className="bg-gradient-to-br from-rose-50 to-white border border-rose-200 rounded-2xl p-4 hover:shadow-md transition-shadow duration-200">
+									<p className="text-xs font-semibold tracking-widest text-rose-700 uppercase mb-3">
+										Order Status
 									</p>
-									<div className=" flex flex-row">
+									<div className="flex items-center gap-3">
 										<span
-											className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${getStatusBadgeClasses(
+											className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold ${getStatusBadgeClasses(
 												order.status
 											)}`}
 										>
-											<span className="w-1.5 h-1.5 rounded-full bg-current mr-2" />
+											<span className="w-2 h-2 rounded-full bg-current mr-2" />
 											{order.status || "pending"}
 										</span>
-										<select
-											value={status}
-                                            disabled
-											className="ml-4 px-2 py-1 border border-secondary/20 rounded-lg text-sm text-secondary outline-none"
-										>
-											<option
-												value="pending"
-												className="bg-transparent border-1 border-accent rounded-full"
-											>
-												Pending
-											</option>
-											<option
-												value="processing"
-												className="bg-transparent border-1 border-accent rounded-full"
-											>
-												Processing
-											</option>
-											<option
-												value="completed"
-												className="bg-transparent border-1 border-accent rounded-full"
-											>
-												Completed
-											</option>
-											<option
-												value="cancelled"
-												className="bg-transparent border-1 border-accent rounded-full"
-											>
-												Cancelled
-											</option>
-										</select>
 									</div>
 								</div>
-								<div>
-									<p className="text-xs font-semibold tracking-wide text-secondary/60 uppercase">
+
+								{/* Total Amount */}
+								<div className="bg-gradient-to-br from-teal-50 to-white border border-teal-200 rounded-2xl p-4 hover:shadow-md transition-shadow duration-200">
+									<p className="text-xs font-semibold tracking-widest text-teal-700 uppercase">
 										Total Amount
 									</p>
-									<p className="text-lg font-bold text-[color:var(--color-gold)]">
+									<p className="text-2xl font-black text-teal-900 mt-2">
 										{formatCurrency(order.total ?? orderTotalFromItems)}
 									</p>
 									{order.total != null &&
 										orderTotalFromItems != null &&
 										Number(order.total) !== Number(orderTotalFromItems) && (
-											<p className="text-[11px] text-secondary/60 mt-0.5">
-												Calculated from items:{" "}
-												<span className="font-medium">
+											<p className="text-xs text-teal-600 mt-2">
+												Calculated: <span className="font-semibold text-teal-800">
 													{formatCurrency(orderTotalFromItems)}
 												</span>
 											</p>
@@ -183,53 +169,73 @@ export default function ViewOrderInfoCustomer(props) {
 							</div>
 						</div>
 
-						{/* Address */}
-						<div className="border border-secondary/10 rounded-xl p-4 bg-white/60">
-							<p className="text-xs font-semibold tracking-wide text-secondary/60 uppercase mb-1">
-								Delivery Address
-							</p>
-							<p className="text-sm text-secondary whitespace-pre-line">
+						<div className="border-2 border-indigo-200 rounded-2xl p-5 bg-gradient-to-br from-indigo-50 to-white hover:shadow-md transition-shadow duration-200">
+							<div className="flex items-center gap-3 mb-3">
+								<div className="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center">
+									<svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+									</svg>
+								</div>
+								<p className="text-sm font-bold text-indigo-900 uppercase tracking-wide">
+									Delivery Address
+								</p>
+							</div>
+							<p className="text-sm text-indigo-800 whitespace-pre-line leading-relaxed ml-13">
 								{order.address}
 							</p>
 						</div>
 
-						{/* Notes (if any) */}
 
-						<div className="border border-secondary/10 rounded-xl p-4 bg-white/60">
-							<p className="text-xs font-semibold tracking-wide text-secondary/60 uppercase mb-1">
-								Additional Notes
-							</p>
-							<textarea
-								className="text-sm text-secondary whitespace-pre-line w-full outline-0"
-								value={order.notes || "No additional notes provided."}
-								disabled
-							></textarea>
-						</div>
+<div className="border-2 border-lime-200 rounded-2xl p-5 bg-gradient-to-br from-lime-50 to-white hover:shadow-md transition-shadow duration-200">
+	<div className="flex items-center gap-3 mb-4">
+		<div className="w-10 h-10 rounded-xl bg-lime-100 flex items-center justify-center flex-shrink-0">
+			<svg className="w-5 h-5 text-lime-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+			</svg>
+		</div>
+		<p className="text-sm font-bold text-lime-900 uppercase tracking-wide">
+			Additional Notes
+		</p>
+	</div>
+	<textarea
+		className="text-sm text-lime-900 whitespace-pre-line w-full outline-0 bg-white rounded-xl border border-lime-200 p-3 focus:border-lime-400 transition-colors duration-200"
+		value={order.notes || "No additional notes provided."}
+		disabled
+		rows="4"
+	></textarea>
+</div>
 
-						{/* Items */}
-						<div className="border border-secondary/10 rounded-xl bg-white overflow-hidden">
-							<div className="flex items-center justify-between px-4 py-3 border-b border-secondary/10 bg-secondary/5">
-								<p className="text-sm font-semibold text-secondary">
-									Items in this order
-								</p>
-								<p className="text-xs text-secondary/60">
-									{order.items?.length || 0} item
-									{(order.items?.length || 0) !== 1 ? "s" : ""}
+			
+						<div className="border-2 border-sky-200 rounded-2xl bg-white overflow-hidden hover:shadow-md transition-shadow duration-200">
+							<div className="flex items-center justify-between px-5 py-4 border-b-2 border-sky-200 bg-gradient-to-r from-sky-50 to-sky-50">
+								<div className="flex items-center gap-3">
+									<div className="w-10 h-10 rounded-xl bg-sky-100 flex items-center justify-center">
+										<svg className="w-5 h-5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+										</svg>
+									</div>
+									<p className="text-sm font-bold text-sky-900 uppercase">
+										Items in this order
+									</p>
+								</div>
+								<p className="text-xs font-semibold text-sky-700 bg-sky-100 px-3 py-1 rounded-full">
+									{order.items?.length || 0} item{(order.items?.length || 0) !== 1 ? "s" : ""}
 								</p>
 							</div>
 
 							{Array.isArray(order.items) && order.items.length > 0 ? (
-								<div className="max-h-64 overflow-y-auto divide-y divide-secondary/10">
+								<div className="max-h-72 overflow-y-auto divide-y divide-sky-100">
 									{order.items.map((item, index) => {
 										const lineTotal = (item.price || 0) * (item.quantity || 0);
 										return (
 											<div
 												key={`${item.productID}-${index}`}
-												className="flex items-center gap-4 px-4 py-3"
+												className="flex items-center gap-4 px-5 py-4 hover:bg-sky-50 transition-colors duration-200"
 											>
-												{/* Thumbnail */}
+												
 												<div className="flex-shrink-0">
-													<div className="w-14 h-14 rounded-lg overflow-hidden bg-secondary/5 flex items-center justify-center">
+													<div className="w-16 h-16 rounded-xl overflow-hidden bg-sky-100 flex items-center justify-center border border-sky-200 hover:border-sky-400 transition-colors duration-200">
 														{item.image ? (
 															<img
 																src={item.image}
@@ -237,37 +243,35 @@ export default function ViewOrderInfoCustomer(props) {
 																className="w-full h-full object-cover"
 															/>
 														) : (
-															<span className="text-xs text-secondary/40">
+															<span className="text-xs text-sky-600 font-medium">
 																No image
 															</span>
 														)}
 													</div>
 												</div>
 
-												{/* Details */}
+											
 												<div className="flex-1 min-w-0">
-													<p className="text-sm font-semibold text-secondary truncate">
+													<p className="text-sm font-bold text-sky-900 truncate">
 														{item.name}
 													</p>
-													<p className="text-xs text-secondary/60 mt-0.5">
-														Product ID:{" "}
-														<span className="font-medium">
-															{item.productID}
-														</span>
+													<p className="text-xs text-sky-700 mt-1">
+														ID: <span className="font-semibold text-sky-800">{item.productID}</span>
 													</p>
-													<p className="text-xs text-secondary/60 mt-0.5">
-														Qty:{" "}
-														<span className="font-medium">{item.quantity}</span>{" "}
-														&nbsp;|&nbsp; Unit Price:{" "}
-														<span className="font-medium">
-															{formatCurrency(item.price)}
-														</span>
-													</p>
+													<div className="flex gap-4 mt-2 text-xs">
+														<p className="text-sky-700">
+															Qty: <span className="font-bold text-sky-900">{item.quantity}</span>
+														</p>
+														<span className="text-sky-400">•</span>
+														<p className="text-sky-700">
+															Price: <span className="font-bold text-sky-900">{formatCurrency(item.price)}</span>
+														</p>
+													</div>
 												</div>
 
-												{/* Line total */}
+											
 												<div className="flex-shrink-0 text-right">
-													<p className="text-sm font-semibold text-secondary">
+													<p className="text-sm font-black text-sky-900 bg-sky-100 px-3 py-2 rounded-lg border border-sky-200">
 														{formatCurrency(lineTotal)}
 													</p>
 												</div>
@@ -276,20 +280,17 @@ export default function ViewOrderInfoCustomer(props) {
 									})}
 								</div>
 							) : (
-								<div className="px-4 py-6 text-center text-sm text-secondary/60">
+								<div className="px-5 py-8 text-center text-sm text-sky-700 font-medium">
 									No items found for this order.
 								</div>
 							)}
 						</div>
 					</div>
-
-					{/* Footer */}
-					
 				</div>
 			</Modal>
 
 			<button
-				className="bg-accent/70 hover:bg-accent px-3 py-2 rounded-lg text-white cursor-pointer text-sm font-medium shadow-sm"
+				className="bg-gradient-to-r from-accent to-blue-950 hover:from-dark to-blue-900- hover:to-indigo-700 px-4 py-2.5 rounded-lg text-white cursor-pointer text-sm font-bold shadow-md hover:shadow-lg transition-all duration-200"
 				onClick={() => {
 					setIsModalOpen(true);
 				}}

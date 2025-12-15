@@ -1,4 +1,3 @@
-// src/pages/aboutUsPage.jsx
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -21,7 +20,7 @@ export default function AboutUsPage() {
 
   return (
     <div className="w-full min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Hero Section - Same exact style as Home */}
+
       <section className="relative min-h-screen flex items-center justify-center">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -52,7 +51,7 @@ export default function AboutUsPage() {
             .
           </h1>
 
-          {/* Animated Slogan - Same as Home */}
+ 
           <motion.p
             key={activeIndex}
             initial={{ opacity: 0, y: 20 }}
@@ -81,7 +80,7 @@ export default function AboutUsPage() {
         </motion.div>
       </section>
 
-      {/* Our Story - Glassmorphic Cards (Same style as Home) */}
+
       <section className="py-20 px-6 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -138,7 +137,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Core Values - Same glass cards */}
+   
       <section className="py-20 bg-gradient-to-b from-black via-slate-950 to-black">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-4xl sm:text-5xl font-black mb-16">
@@ -180,7 +179,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* Final CTA - Matching Home perfectly */}
+   
       <section className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/30 via-indigo-900/30 to-violet-900/30" />
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">

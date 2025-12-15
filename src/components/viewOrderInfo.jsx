@@ -33,7 +33,7 @@ export default function ViewOrderInfo(props) {
 			case "processing":
 				return "bg-blue-100 text-blue-800 border border-blue-200";
 			default:
-				// pending / default
+
 				return "bg-yellow-100 text-yellow-800 border border-yellow-200";
 		}
 	};

@@ -1,4 +1,4 @@
-// src/components/footer.jsx
+
 import { Link } from "react-router-dom";
 import { BiMapPin, BiPhone, BiMailSend, BiChevronRight } from "react-icons/bi";
 
@@ -58,12 +58,7 @@ export default function Footer() {
                     Contact
                   </Link>
                 </li>
-                <li>
-                  <Link to="/orders" className="hover:text-cyan-400 transition flex items-center gap-2 group">
-                    <span className="w-0 h-px bg-cyan-400 transition-all duration-300 group-hover:w-6"></span>
-                    Track Orders
-                  </Link>
-                </li>
+
               </ul>
             </div>
 
@@ -105,8 +100,8 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center gap-3">
                   <BiMailSend className="text-cyan-400" />
-                  <a href="mailto:info@isuri.lk" className="hover:text-cyan-400 transition">
-                    info@isuri.lk
+                  <a href="mailto:info@isuritechnologies.com" className="hover:text-cyan-400 transition">
+                    info@isuritechnologies.com
                   </a>
                 </li>
                 <li className="flex items-center gap-3">

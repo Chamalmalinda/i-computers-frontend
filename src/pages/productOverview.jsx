@@ -11,7 +11,7 @@ export default function ProductOverview() {
   const navigate = useNavigate();
   const params = useParams();
   const [product, setProduct] = useState(null);
-  const [status, setStatus] = useState("loading"); // loading, error, success
+  const [status, setStatus] = useState("loading"); 
 
   useEffect(() => {
     if (status === "loading") {
@@ -42,51 +42,51 @@ export default function ProductOverview() {
         <div className="w-full min-h-screen bg-gradient-to-br from-primary/5 via-white to-primary/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-              {/* Image Slider Section */}
+      
               <div className="order-1 lg:order-none">
                 <div className="sticky top-4 lg:top-8">
                   <ImageSlider images={product.images} />
                 </div>
               </div>
 
-              {/* Product Details Section */}
+           
               <div className="flex flex-col justify-center space-y-8 order-2 lg:order-none">
-                {/* Mobile Title */}
+           
                 <h1 className="text-3xl sm:text-4xl lg:hidden font-black text-secondary tracking-tight">
                   {product.name}
                 </h1>
 
-                {/* Desktop Title */}
+             
                 <h1 className="hidden lg:block text-4xl lg:text-5xl xl:text-6xl font-black text-secondary leading-tight">
                   {product.name}
                 </h1>
 
-                {/* Product ID */}
+             
                 <p className="text-sm text-secondary/60 uppercase tracking-wider">
                   #{product.productID}
                 </p>
 
-                {/* Category */}
+             
                 <div className="flex items-center text-lg text-secondary/80">
                   <CgChevronRight className="mr-2 text-accent" />
                   <span className="font-medium">{product.category}</span>
                 </div>
 
-                {/* Alternative Names */}
+              
                 {product.altNames && product.altNames.length > 0 && (
                   <p className="text-md text-secondary/70 italic">
                     {product.altNames.join(" • ")}
                   </p>
                 )}
 
-                {/* Description */}
+            
                 <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-secondary/10">
                   <p className="text-base lg:text-lg text-secondary/90 leading-relaxed">
                     {product.description}
                   </p>
                 </div>
 
-                {/* Pricing */}
+     
                 <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4">
                   {product.labelledPrice > product.price && (
                     <div className="flex items-center gap-3">
@@ -103,7 +103,7 @@ export default function ProductOverview() {
                   </h2>
                 </div>
 
-                {/* Action Buttons */}
+        
                 <div className="flex flex-col sm:flex-row gap-4 pt-6">
                   <button
                     onClick={() => {

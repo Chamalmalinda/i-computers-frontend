@@ -1,4 +1,3 @@
-// src/pages/home.jsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -21,7 +20,7 @@ export default function Home() {
 
   return (
     <div className="w-full min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Hero Section - Styled exactly like the About page */}
+    
       <section className="relative min-h-screen flex items-center justify-center">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -47,7 +46,7 @@ export default function Home() {
             With Trusted Hardware & Service.
           </h1>
 
-          {/* Animated Slogan - Same as About */}
+  
           <motion.p
             key={activeIndex}
             initial={{ opacity: 0, y: 20 }}
@@ -76,7 +75,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Quick Value Props - Glassmorphic Cards (Same style as About) */}
+ 
       <section className="py-20 px-6 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-3 gap-8">
           <motion.div
@@ -122,7 +121,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Highlight Cards - Matching About page style */}
+    
       <section className="py-20 bg-gradient-to-b from-black via-slate-950 to-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid gap-8 md:grid-cols-2">
@@ -197,7 +196,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA - Identical to About page */}
+
       <section className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/30 via-indigo-900/30 to-violet-900/30" />
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">

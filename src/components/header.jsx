@@ -1,21 +1,37 @@
 import { useState } from "react";
 import { BiShoppingBag } from "react-icons/bi";
 import { LuListCollapse } from "react-icons/lu";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import UserData from "./userData";
 
 export function Header(){
     const [sideBarOpen, setSideBarOpen] = useState(false);
+    const location = useLocation();
+
+    const isActive = (path) => location.pathname === path;
+
     return(
         <header className="w-full h-[100px] bg-accent flex relative">
             <LuListCollapse  onClick={()=>{setSideBarOpen(true)}}className="text-white my-auto text-2xl ml-6 lg:hidden" />
             <img src="/logo.png" className="h-full" alt="logo"/>
 
             <div className="w-full h-full hidden lg:flex text-xl text-primary justify-center items-center gap-[30px]">
-                <Link to="/">Home</Link >
-                <Link to="/products">Products</Link >
-                <Link to="/about">About</Link >
-                <Link to="/contacts">Contacts</Link >
+                <Link to="/" className={`relative pb-2 transition-colors ${isActive('/') ? 'text-white' : ''}`}>
+                    Home
+                    {isActive('/') && <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white rounded-t-full"></div>}
+                </Link>
+                <Link to="/products" className={`relative pb-2 transition-colors ${isActive('/products') ? 'text-white' : ''}`}>
+                    Products
+                    {isActive('/products') && <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white rounded-t-full"></div>}
+                </Link>
+                <Link to="/about" className={`relative pb-2 transition-colors ${isActive('/about') ? 'text-white' : ''}`}>
+                    About
+                    {isActive('/about') && <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white rounded-t-full"></div>}
+                </Link>
+                <Link to="/contacts" className={`relative pb-2 transition-colors ${isActive('/contacts') ? 'text-white' : ''}`}>
+                    Contacts
+                    {isActive('/contacts') && <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white rounded-t-full"></div>}
+                </Link>
 
             </div>
             <div className="absolute right-24 top-0 h-full  items-center hidden lg:flex">
@@ -43,28 +59,28 @@ export function Header(){
                     </div>
                     <div className="w-full h-full flex flex-col text-xl text-secondary justify-start items-start  gap-6 mt-10 pl-6">
 								<a
-									className="hover:text-secondary transition"
+									className={`relative pb-2 transition-colors ${isActive('/') ? 'text-secondary font-semibold border-b-2 border-secondary' : 'hover:text-secondary'}`}
 									href="/"
 									onClick={() => setSideBarOpen(false)}
 								>
 									Home
 								</a>
 								<a
-									className="hover:text-secondary transition"
+									className={`relative pb-2 transition-colors ${isActive('/products') ? 'text-secondary font-semibold border-b-2 border-secondary' : 'hover:text-secondary'}`}
 									href="/products"
 									onClick={() => setSideBarOpen(false)}
 								>
 									Products
 								</a>
 								<a
-									className="hover:text-secondary transition"
+									className={`relative pb-2 transition-colors ${isActive('/about') ? 'text-secondary font-semibold border-b-2 border-secondary' : 'hover:text-secondary'}`}
 									href="/about"
 									onClick={() => setSideBarOpen(false)}
 								>
 									About
 								</a>
-                                								<a
-									className="hover:text-secondary transition"
+                                <a
+									className={`relative pb-2 transition-colors ${isActive('/contacts') ? 'text-secondary font-semibold border-b-2 border-secondary' : 'hover:text-secondary'}`}
 									href="/contacts"
 									onClick={() => setSideBarOpen(false)}
 								>

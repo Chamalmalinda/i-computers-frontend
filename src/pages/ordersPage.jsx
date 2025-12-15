@@ -27,7 +27,7 @@ export default function OrdersPage() {
   return (
     <div className="w-full min-h-screen bg-gradient-to-br primary to-white py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Page Title */}
+
         <div className="mb-10 text-center sm:text-left">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-secondary tracking-tight">
             Your Orders
@@ -90,7 +90,7 @@ export default function OrdersPage() {
               </table>
             </div>
 
-            {/* Mobile Cards */}
+        
             <div className="lg:hidden space-y-6">
               {orders.map((order, index) => (
                 <div
@@ -153,7 +153,7 @@ export default function OrdersPage() {
           </div>
         )}
 
-        {/* Empty State */}
+ 
         {!loaded && orders.length === 0 && loaded && (
           <div className="text-center py-20">
             <p className="text-2xl font-semibold text-secondary/70">No orders found</p>
