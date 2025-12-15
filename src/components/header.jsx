@@ -65,7 +65,7 @@ export function Header(){
 								</a>
                                 								<a
 									className="hover:text-secondary transition"
-									href="/about"
+									href="/contacts"
 									onClick={() => setSideBarOpen(false)}
 								>
 									Contact
