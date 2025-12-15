@@ -96,7 +96,7 @@ export default function LoginPage() {
 
       {/* Right Section - Login Form */}
       <div className="w-full lg:w-1/2 flex justify-center items-center p-6 lg:p-12">
-        <div className="w-full max-w-md backdrop-blur-lg bg-white/10 shadow-2xl rounded-2xl p-8 lg:p-10 flex flex-col">
+        <div className="w-full max-w-md backdrop-blur-lg shadow-2xl rounded-2xl p-8 lg:p-10 flex flex-col">
           <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-white text-center drop-shadow-lg">
             Login
           </h1>

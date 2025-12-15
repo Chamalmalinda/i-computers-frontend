@@ -63,7 +63,14 @@ export function Header(){
 								>
 									About
 								</a>
-                                <div className=" flex justify-center bg-accent p-2 rounded-full">
+                                								<a
+									className="hover:text-secondary transition"
+									href="/about"
+									onClick={() => setSideBarOpen(false)}
+								>
+									Contact
+								</a>
+                                <div className="flex justify-center items-center bg-accent/50 backdrop:blur-2xl-md px-4 py-2 rounded-full shadow-lg hover:bg-accent transition-all duration-300">
 								<UserData />
 								</div>
 
