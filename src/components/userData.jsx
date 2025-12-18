@@ -4,22 +4,34 @@ import { Link } from "react-router-dom";
 
 export default function UserData() {
   const [user, setUser] = useState(null);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token != null) {
-      axios
-        .get(import.meta.env.VITE_BACKEND_URL + "/users/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => {
-          setUser(response.data);
-        })
-        .catch(() => {
-          setUser(null);
-        });
+    
+    // If no token, don't make API call
+    if (token == null) {
+      setUser(null);
+      return;
     }
+
+    // Only make API call if token exists
+    axios
+      .get(import.meta.env.VITE_BACKEND_URL + "/users/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setUser(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching user:", error.message);
+        // If 401, clear token
+        if (error.response?.status === 401) {
+          localStorage.removeItem("token");
+        }
+        setUser(null);
+      });
   }, []);
 
   const [selectedOption, setSelectedOption] = useState("user");

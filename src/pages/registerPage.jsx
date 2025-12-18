@@ -49,9 +49,19 @@ export default function RegisterPage() {
       navigate("/login");
       setIsLoading(false);
     } catch (err) {
-      toast.error("Registration failed! Please check your data and try again.");
-      console.log(err);
       setIsLoading(false);
+      
+      // Handle specific error responses
+      if (err.response?.status === 400) {
+        toast.error(err.response.data.message || "Registration failed! Please check your data and try again.");
+      } else if (err.response?.status === 409) {
+        toast.error("This email is already registered. Please use a different email or try logging in.");
+      } else if (err.response?.data?.message) {
+        toast.error(err.response.data.message);
+      } else {
+        toast.error("Registration failed! Please check your data and try again.");
+      }
+      console.log(err);
     }
   }
 
@@ -122,7 +132,8 @@ export default function RegisterPage() {
     
           <button
             onClick={register}
-            className="w-full h-12 mb-4 bg-accent text-white font-bold text-lg rounded-lg border-2 border-accent hover:bg-transparent hover:text-accent transition duration-300"
+            disabled={isLoading}
+            className="w-full h-12 mb-4 bg-accent text-white font-bold text-lg rounded-lg border-2 border-accent hover:bg-transparent hover:text-accent transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Register Now
           </button>

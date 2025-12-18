@@ -22,7 +22,7 @@ export default function LoginPage() {
         .then((res) => {
           localStorage.setItem("token", res.data.token);
 
-          if (res.data.role == "admin") {
+          if (res.data.role === "admin") {
             navigate("/admin");
           } else {
             navigate("/");
@@ -33,6 +33,7 @@ export default function LoginPage() {
         })
         .catch((err) => {
           console.log(err);
+          toast.error("Google login failed. Please try again.");
           setIsLoading(false);
         });
     },
@@ -61,7 +62,7 @@ export default function LoginPage() {
 
       localStorage.setItem("token", res.data.token);
 
-      if (res.data.role == "admin") {
+      if (res.data.role === "admin") {
         navigate("/admin");
       } else {
         navigate("/");
