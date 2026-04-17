@@ -95,12 +95,12 @@ export default function ContactPage() {
             <h3 className="text-xl font-bold text-cyan-300 mb-3">WhatsApp / Chat</h3>
             <p className="text-base text-gray-300 mb-6">Fastest response — usually under 2 minutes</p>
             <a
-              href="https://wa.me/94771234567"
+              href="https://wa.me/94714599814"
               target="_blank"
               rel="noopener noreferrer"
               className="text-cyan-400 font-semibold hover:underline"
             >
-              +94 77 123 4567
+              +94 71 459 9814
             </a>
           </motion.div>
 
@@ -121,7 +121,7 @@ export default function ContactPage() {
               Mon–Sat: 9 AM – 7 PM<br />Sunday: 10 AM – 5 PM
             </p>
             <a href="tel:+94771234567" className="text-cyan-400 font-semibold hover:underline">
-              +94 77 123 4567
+              +94 71 459 n9814
             </a>
           </motion.div>
 
