@@ -8,7 +8,7 @@ export default function ProductCard(props) {
   return (
     <Link
       to={"/overview/" + product.productID}
-      className="w-full max-w-sm mx-auto sm:w-[280px] md:w-[300px] h-[420px] my-4 shadow-2xl cursor-pointer relative overflow-hidden rounded-xl hover:[&_.buttons]:opacity-100 hover:[&_.primary-image]:opacity-0 transition-all duration-300 hover:shadow-3xl"
+      className="w-full max-w-sm mx-auto sm:w-[280px] md:w-[300px] h-[420px] my-4 shadow-2xl cursor-pointer relative overflow-hidden rounded-xs hover:[&_.buttons]:opacity-100 hover:[&_.primary-image]:opacity-0 transition-all duration-300 hover:shadow-3xl"
     >
       <div className="w-full h-[260px] relative">
         <img
@@ -40,7 +40,7 @@ export default function ProductCard(props) {
       </div>
 
       <div className="w-full h-[160px] absolute bottom-0 left-0 opacity-0 buttons bg-gradient-to-t from-white via-white to-white/90 flex flex-col gap-4 justify-center items-center transition-opacity duration-300">
-        <button className="border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 h-12 w-40 sm:w-48 rounded-lg flex justify-center items-center font-semibold text-base">
+        <button className="border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 h-12 w-40 sm:w-48 rounded-xs flex justify-center items-center font-semibold text-base">
           View Details
         </button>
       </div>

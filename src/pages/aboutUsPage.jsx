@@ -35,7 +35,7 @@ export default function AboutUsPage() {
           className="relative z-10 max-w-7xl mx-auto px-6 text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300 mb-4">
-            Isuri Technologies • Since 2015
+            i-computers Technologies • Since 2015
           </p>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight">

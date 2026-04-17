@@ -15,7 +15,7 @@ export default function LoginPage() {
   const googleLogin = useGoogleLogin({
     onSuccess: (response) => {
       setIsLoading(true);
-      axios
+      axios 
         .post(import.meta.env.VITE_BACKEND_URL + "/users/google-login", {
           token: response.access_token,
         })

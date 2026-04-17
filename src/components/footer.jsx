@@ -101,7 +101,7 @@ export default function Footer() {
                 <li className="flex items-center gap-3">
                   <BiMailSend className="text-cyan-400" />
                   <a href="mailto:info@isuritechnologies.com" className="hover:text-cyan-400 transition">
-                    info@isuritechnologies.com
+                    info@icomputers.com
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
@@ -125,7 +125,7 @@ export default function Footer() {
       <div className="bg-black/30 py-6">
         <div className="max-w-7xl mx-auto px-6 text-center text-sm text-primary/70">
           <p>
-            © {new Date().getFullYear()} <span className="font-semibold text-cyan-400">Isuri Technologies</span>. 
+            © {new Date().getFullYear()} <span className="font-semibold text-cyan-400">I-computers Technologies</span>. 
             All rights reserved. | Crafted with precision in Sri Lanka.
           </p>
         </div>

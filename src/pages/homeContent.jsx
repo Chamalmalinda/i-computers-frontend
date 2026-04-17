@@ -35,7 +35,7 @@ export default function Home() {
           className="relative z-10 max-w-7xl mx-auto px-6 text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300 mb-4">
-            Isuri Technologies • Since 2015
+            i-computers Technologies • Since 2015
           </p>
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight">
             Upgrade Your{" "}
@@ -214,7 +214,7 @@ export default function Home() {
               START SHOPPING NOW
             </Link>
             <a
-              href="https://wa.me/94771234567"
+              href="https://wa.me/94712222222"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full border-2 border-cyan-400 px-12 py-5 text-xl font-bold text-cyan-400 backdrop-blur-md transition-all hover:bg-cyan-400/10 hover:scale-110"

@@ -109,7 +109,7 @@ export default function ProductOverview() {
                     onClick={() => {
                       addToCart(product, 1);
                     }}
-                    className="flex-1 bg-accent text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg hover:bg-accent/90 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                    className="flex-1 bg-accent text-white font-bold text-lg px-8 py-4 rounded-xs shadow-lg hover:bg-accent/90 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                   >
                     Add to Cart
                   </button>
@@ -128,7 +128,7 @@ export default function ProductOverview() {
                         ],
                       });
                     }}
-                    className="flex-1 border-2 border-accent text-accent font-bold text-lg px-8 py-4 rounded-xl bg-white hover:bg-accent hover:text-white shadow-lg transition-all duration-300 transform hover:scale-105"
+                    className="flex-1 border-2 border-accent text-accent font-bold text-lg px-8 py-4 rounded-xs bg-white hover:bg-accent hover:text-white shadow-lg transition-all duration-300 transform hover:scale-105"
                   >
                     Buy Now
                   </button>

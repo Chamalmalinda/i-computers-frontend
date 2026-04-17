@@ -35,7 +35,7 @@ export default function ContactPage() {
           className="relative z-10 max-w-7xl mx-auto px-6 text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300 mb-4">
-            Get in Touch • Isuri Technologies
+            Get in Touch • i-computers Technologies
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight">
             We're Here
@@ -140,7 +140,7 @@ export default function ContactPage() {
             <h3 className="text-xl font-bold mb-3">Email Us</h3>
             <p className="text-base text-gray-300 mb-6">Reply within 24 hours</p>
             <a href="mailto:info@isuritechnologies.com" className="text-cyan-400 font-semibold hover:underline break-all">
-              info@isuritechnologies.com
+              info@icomputers.com
             </a>
           </motion.div>
 
